@@ -1,26 +1,57 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* 1. 프리텐다드 폰트 불러오기 (CDN) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+@theme {
+  /* 컬러 시스템 */
+  --color-main: #537fe7;
+  --color-bg-white: #eef0f5;
+  --color-bg-gray-light: #f5f5f5;
+  --color-bg-gray-mid: #e1e1e1;
+  --color-point-red: #ff5f5f;
+  --color-white: #eef0f5;
+
+  /* 폰트 설정: 프리텐다드를 기본 싼스로 설정 */
+  --font-sans: 'Pretendard', 'Inter', 'Noto Sans KR', sans-serif;
+
+  /* 웹 최적화 타이포그래피 (Heading 시스템) */
+  --font-size-display: 3.5rem; /* 아주 큰 강조 문구 */
+  --font-size-h1: 2.25rem; /* 페이지 제목 */
+  --font-size-h2: 1.875rem; /* 섹션 제목 */
+  --font-size-h3: 1.5rem; /* 소제목 */
+  --font-size-base: 1rem; /* 일반 본문 (16px) */
+  --font-size-sm: 0.875rem; /* 부연 설명 (14px) */
+  --font-size-xs: 0.75rem; /* 캡션/태그 (12px) */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 태그안에 있으면 자동 적용 */
+@layer base {
+  body {
+    background-color: var(--color-bg-white);
+    color: #111827;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6; /* 본문 가독성을 위한 줄간격 */
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* HTML 태그별 기본 크기 고정 (실무 표준) */
+  h1 {
+    font-size: var(--font-size-h1);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: var(--font-size-h2);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+  }
+  p {
+    font-size: var(--font-size-base);
+  }
 }
