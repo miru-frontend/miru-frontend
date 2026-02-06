@@ -1,7 +1,9 @@
+/* 1. 모든 @import는 파일 최상단에 모아야 에러가 안 납니다! */
 @import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
-/* 1. 프리텐다드 폰트 불러오기 (CDN) */
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   /* 컬러 시스템 */
@@ -23,10 +25,34 @@
   --font-size-base: 1rem; /* 일반 본문 (16px) */
   --font-size-sm: 0.875rem; /* 부연 설명 (14px) */
   --font-size-xs: 0.75rem; /* 캡션/태그 (12px) */
+
+  /* shadcn/ui 변수와 우리 컬러 연결 (핵심!) */
+  --color-background: var(--color-bg-white);
+  --color-foreground: #111827;
+
+  --color-primary: var(--color-main);
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: var(--color-bg-gray-mid);
+  --color-secondary-foreground: #111827;
+
+  --color-destructive: var(--color-point-red);
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #d1d5db;
+  --color-input: #d1d5db;
+  --color-ring: var(--color-main);
+
+  --radius-lg: 0.625rem;
+  --radius-md: calc(0.625rem - 2px);
+  --radius-sm: calc(0.625rem - 4px);
 }
 
 /* 태그안에 있으면 자동 적용 */
 @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
   body {
     background-color: var(--color-bg-white);
     color: #111827;
@@ -34,6 +60,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6; /* 본문 가독성을 위한 줄간격 */
+    @apply bg-background text-foreground;
   }
 
   /* HTML 태그별 기본 크기 고정 (실무 표준) */
