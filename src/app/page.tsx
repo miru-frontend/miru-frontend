@@ -6,7 +6,7 @@ import { Textarea } from '@/shared/ui/textarea';
 
 export default function Home() {
   return (
-    <div className="p-10 space-y-10 bg-bg-white min-h-screen">
+    <div className=" space-y-10 bg-bg-white min-h-screen">
       {/* 1. Button: 메인 컬러 확인 */}
       <section className="space-y-4">
         <h2 className="text-h2">1. Buttons (Primary & Point)</h2>
@@ -20,6 +20,15 @@ export default function Home() {
       </section>
 
       {/* 2. Badge: 강조 색상 확인 */}
+      <section className="space-y-4">
+        <h2 className="text-h2">2. Badges</h2>
+        <div className="flex gap-2">
+          <Badge variant="default">Main Label</Badge>
+          <Badge variant="outline">Outline Label</Badge>
+          <Badge variant="destructive">Warning</Badge>
+        </div>
+      </section>
+
       <section className="space-y-4">
         <h2 className="text-h2">2. Badges</h2>
         <div className="flex gap-2">
