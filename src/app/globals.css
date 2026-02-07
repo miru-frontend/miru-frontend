@@ -82,3 +82,12 @@
     font-size: var(--font-size-base);
   }
 }
+
+/* Tiptap Placeholder 스타일 */
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #9ca3af; /* Tailwind gray-400 색상 */
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
