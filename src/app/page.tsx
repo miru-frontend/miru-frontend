@@ -1,3 +1,4 @@
+import { NicknameForm } from '@/features/nickname/ui/NicknameForm';
 import { Badge } from '@/shared/ui/badge';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
@@ -8,6 +9,7 @@ import { Textarea } from '@/shared/ui/textarea';
 export default function Home() {
   return (
     <div className=" space-y-10 bg-bg-white min-h-screen">
+      <NicknameForm />
       {/* 1. Button: 메인 컬러 확인 */}
       <section className="space-y-4">
         <h2 className="text-h2">1. Buttons (Primary & Point)</h2>
