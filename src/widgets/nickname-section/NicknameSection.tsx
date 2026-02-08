@@ -1,6 +1,6 @@
 // widgets/nickname-section/ui/NicknameSection.tsx
-import { NicknameCharacter } from '@/features/nickname/ui/NicknameCharacter';
-import { NicknameForm } from '@/features/nickname/ui/NicknameForm';
+import { NicknameCharacter } from '@/features/user/nickname/ui/NicknameCharacter';
+import { NicknameForm } from '@/features/user/nickname/ui/NicknameForm';
 
 export const NicknameSection = () => {
   return (

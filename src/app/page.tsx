@@ -1,4 +1,4 @@
-import { NicknameForm } from '@/features/nickname/ui/NicknameForm';
+import { NicknameForm } from '@/features/user/nickname/ui/NicknameForm';
 import { Badge } from '@/shared/ui/badge';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
