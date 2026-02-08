@@ -8,6 +8,7 @@ import {
   GoogleButton,
 } from '../_components/SocialButtons';
 import { useModalStore } from '@/app/store/useModalStore';
+import { startSocialLogin } from '@/features/auth/model/login';
 
 export default function LoginForm() {
   const [checkedItems, setCheckedItems] = useState({
@@ -38,8 +39,7 @@ export default function LoginForm() {
       });
       return;
     }
-
-    console.log(`${provider} 로그인 시도`);
+    startSocialLogin(provider);
   };
 
   return (
