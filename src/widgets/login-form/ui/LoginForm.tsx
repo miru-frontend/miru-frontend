@@ -8,7 +8,7 @@ import {
   GoogleButton,
 } from '../_components/SocialButtons';
 import { useModalStore } from '@/app/store/useModalStore';
-import { startSocialLogin } from '@/features/user/auth/model/login';
+import { startSocialLogin } from '@/features/auth/model/login';
 
 export default function LoginForm() {
   const [checkedItems, setCheckedItems] = useState({
