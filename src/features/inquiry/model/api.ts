@@ -1,22 +1,12 @@
-// features/inquiry/model/api.ts (실제 API용)
+// features/inquiry/model/api.ts
+import { apiClient } from '@/shared/api/apiClient'; // 공통 apiClient 가져오기
 import { Inquiry } from './types';
 
 export const fetchAllInquiries = async (): Promise<Inquiry[]> => {
-  // 서버에서 전체 데이터를 주는 엔드포인트라고 가정합니다. [cite: 2026-01-11]
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/inquiry/all`,
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    },
-  );
+  // 1. apiClient를 사용하면 baseURL, CSRF 토큰, withCredentials가 자동으로 적용됩니다.
+  const response = await apiClient.get<Inquiry[]>('/inquiry/all');
 
-  if (!response.ok) {
-    throw new Error('전체 목록을 불러오는 데 실패했습니다.');
-  }
-
-  // 백엔드가 [ {}, {}, ... ] 형태의 배열을 준다고 가정합니다. [cite: 2026-01-11]
-  return response.json();
+  // 2. Axios는 응답 데이터가 'data' 필드에 들어있습니다.
+  // 에러 처리는 apiClient 인터셉터에서 공통으로 하거나, 여기서 추가로 할 수 있습니다.
+  return response.data;
 };

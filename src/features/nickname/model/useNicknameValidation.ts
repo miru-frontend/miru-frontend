@@ -1,25 +1,32 @@
+import axios from 'axios';
+import { apiClient } from '@/shared/api/apiClient';
+
 /**
- * 닉네임을 서버에 저장하는 순수 함수
+ * 닉네임을 서버에 저장하는 함수
  */
 export const checkAndSaveNickname = async (nickname: string) => {
   try {
-    const response = await fetch(
-      //아직 api 구현전
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/user/nickname`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nickname }),
-      },
-    );
-
-    const data = await response.json();
+    const response = await apiClient.post('/api/v1/user/nickname', {
+      nickname,
+    });
 
     return {
-      isOk: response.ok,
-      message: data.message,
+      isOk: true,
+      message: response.data.message,
     };
-  } catch (err) {
-    return { isOk: false, message: '서버 연결에 실패했습니다.' };
+  } catch (err: unknown) {
+    // Axios 에러인지 확인
+    if (axios.isAxiosError(err)) {
+      return {
+        isOk: false,
+        message: err.response?.data?.message ?? '서버에서 오류가 발생했습니다.',
+      };
+    }
+
+    //  Axios가 아닌 진짜 예외
+    return {
+      isOk: false,
+      message: '알 수 없는 오류가 발생했습니다.',
+    };
   }
 };
