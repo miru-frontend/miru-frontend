@@ -30,20 +30,8 @@ export function InquiryWriteForm() {
       await createInquiry({ title, content });
 
       // 2. 성공 시 모달 띄우기
-      openModal({
-        title: '등록 완료',
-        description: '문의글이 성공적으로 등록되었습니다.',
-        buttons: [
-          {
-            label: '확인',
-            onClick: () => {
-              closeModal();
-              router.push('/inquiry'); // 확인 누르면 목록으로 이동 [cite: 2026-02-10]
-            },
-            variant: 'primary',
-          },
-        ],
-      });
+      alert('문의글이 성공적으로 등록되었습니다.');
+      router.push('/inquiry');
     } catch (error) {
       // 3. 실패 시 에러 모달
       openModal({

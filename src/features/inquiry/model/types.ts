@@ -4,3 +4,14 @@ export interface Inquiry {
   date: string; // 작성일
   status: 'WAITING' | 'COMPLETED'; // 답변 상태
 }
+
+export interface InquiryDetailProps {
+  data: {
+    title: string;
+    createdAt: string;
+    status: string;
+    content: string;
+    adminName?: string;
+    adminContent?: string;
+  };
+}
